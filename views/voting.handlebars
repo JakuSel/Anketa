@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>OS Vote</h1>
+    <p>Vote for your favorite OS on mobile phone</p>
+    <div id="hasVotedAlreadyErrorMsg" class="card-panel hidden" style="width: 30%">
+      <span class="red-text text-darken-2">You have already voted, you can only vote once.</span>
+    </div>
+    <form id="vote-form" method="POST" action="/">
+      <p>
+        <input type="radio" name="os" id="Android" value="Android">
+        <label for="Android">Android</label>
+      </p>
+      <p>
+        <input type="radio" name="os" id="iOS" value="iOS">
+        <label for="iOS">iOS</label>
+      </p>
+      <p>
+        <input type="radio" name="os" id="Windows" value="Windows">
+        <label for="Windows">Windows Mobile</label>
+      </p>
+      <p>
+        <input type="radio" name="os" id="Other" value="Other">
+        <label for="Other">Something Else</label>
+      </p>
+      
+      <input id="submitbtn" type="submit" value="Vote" class="btn" onclick="clickCounter()" >
+    </form>
+
+    <br><br>
+    
+    <div id="chartContainer" style="height: 300px;width:100%"></div>
+
+<script>
+function clickCounter() {
+  if(typeof(Storage) !== "undefined") {
+      if (localStorage.clickcount) {
+          localStorage.clickcount = Number(localStorage.clickcount)+1;
+      } else {
+          localStorage.clickcount = 1;
+          document.getElementById("submitbtn").disabled = true;
+      }        
+  } else {
+      document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+  }
+}
+</script>
+
+</div>

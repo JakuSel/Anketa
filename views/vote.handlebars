@@ -1,0 +1,30 @@
+<canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script>
+    
+    new Chart(document.getElementById("bar-chart-horizontal"), {
+    type: 'horizontalBar',
+    data: {
+      labels: ["Android", "iOS", "Windows Phone", "Other"],
+      datasets: [
+        {
+          label: "Numbers of respondents",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9"],
+          data: [{{android}},{{ios}},{{windows}},{{others}}]
+        }
+      ]
+    },
+    options: {
+        scales: {
+            xAxes: [{
+                ticks: {
+                beginAtZero: true,
+                max: 100,
+                min: 0
+            }
+            }]
+        }
+    }
+});
+</script>
